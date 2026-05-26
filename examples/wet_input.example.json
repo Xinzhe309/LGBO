@@ -1,0 +1,45 @@
+{
+  "background": "Example wet experiment for a two-parameter reaction optimization task.",
+  "objective": "Maximize measured yield.",
+  "goal": "max",
+  "y_key": "yield",
+  "batch_q": 2,
+  "parameters": [
+    {
+      "name": "temperature",
+      "type": "continuous",
+      "bounds": [20, 80]
+    },
+    {
+      "name": "solvent_ratio",
+      "type": "continuous",
+      "bounds": [0, 1]
+    }
+  ],
+  "constraints": [
+    "Keep all parameters within their bounds."
+  ],
+  "observations": [
+    {
+      "x": {
+        "temperature": 30,
+        "solvent_ratio": 0.2
+      },
+      "yield": 0.45
+    },
+    {
+      "x": {
+        "temperature": 55,
+        "solvent_ratio": 0.6
+      },
+      "yield": 0.72
+    },
+    {
+      "x": {
+        "temperature": 70,
+        "solvent_ratio": 0.4
+      },
+      "yield": 0.65
+    }
+  ]
+}

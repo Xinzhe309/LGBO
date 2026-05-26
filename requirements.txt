@@ -1,0 +1,5 @@
+requests>=2.31
+numpy
+torch
+botorch
+gpytorch
