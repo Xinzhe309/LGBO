@@ -276,16 +276,10 @@ If you use this code in your research, please cite:
 
 ---
 
-## Future Work
+## Relationship to SAIBO
 
-We are currently building a unified framework for model-guided Bayesian optimization, aiming to systematically integrate different forms of external guidance — including large language models, multi-fidelity predictors, expert priors, and reasoning-based agents — into a common optimization pipeline.
+This project represents one component of the SAIBO (Scientific Artificial Intelligence Bayesian Optimization) framework, which aims to unify LLMs, scientific agents, and Bayesian optimization for scientific discovery.
 
-This upcoming framework will unify our recent directions on preference-guided BO, LLM-accelerated BO, and reasoning-driven scientific optimization under a shared theoretical and algorithmic perspective. In particular, we aim to provide:
+Future extensions and related projects will be released through SAIBO:
 
-- a modular interface for integrating heterogeneous guidance sources into BO;
-- unified surrogate and acquisition formulations across different guidance paradigms;
-- scalable support for high-dimensional and discrete scientific search spaces;
-- standardized evaluation pipelines for both dry benchmarks and wet-lab optimization tasks;
-- improved APIs and reproducible experiment infrastructure.
-
-The first public release of this unified framework is expected in **July 2026**.
+https://github.com/Xinzhe309/SAIBO-framework
