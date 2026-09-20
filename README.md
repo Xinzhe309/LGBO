@@ -38,7 +38,12 @@ This public research release includes:
 - core LGBO preference-to-surrogate machinery;
 - dry and wet experiment runners;
 - toy-function dry benchmarks;
+- download and evaluation code for HPLC, Crossed-barrel, LNP3, and Concrete;
 - offline smoke-test mode for checking the pipeline without an LLM call.
+
+The benchmark CSV files are not duplicated in this repository. See
+[Benchmark data and preprocessing](docs/benchmark_data.md) for direct download
+links, exact processing steps, evaluator definitions, citations, and licenses.
 
 ---
 
@@ -109,7 +114,7 @@ LGBO also shows strong performance on noisy and practical engineering benchmarks
 
 In the Fe-Cr redox flow battery wet-lab experiment, LGBO reaches high-performing regions quickly and concentrates the search more effectively than GPBO and LLAMBO.
 
-> Note: these figures summarize the paper experiments. This repository release currently focuses on the codebase, toy functions, and wet-planning runner.
+> Note: these figures summarize the paper experiments. The repository provides callable benchmark objectives and their data preparation, but the current dry-run CLI still selects the toy functions listed below.
 
 ---
 
@@ -195,6 +200,29 @@ Supported toy functions:
 ackley, rastrigin, griewank, levy
 ```
 
+### Tabular benchmark data
+
+Download and prepare HPLC, Crossed-barrel, LNP3, and Concrete:
+
+```bash
+python scripts/download_benchmarks.py
+```
+
+The source CSV files are downloaded directly from pinned Olympus paths or UCI.
+No checksum verification is performed. The script adds headers to the three
+headerless Olympus files; for Concrete it keeps `Age <= 100`, drops `Age`, and
+renames the remaining columns. Full details and individual download links are
+in [Benchmark data and preprocessing](docs/benchmark_data.md).
+
+Run the callable objective examples with:
+
+```bash
+python -m fun.hplc
+python -m fun.cb
+python -m fun.lnp3
+python -m fun.concrete
+```
+
 ### Wet experiment planning
 
 The wet runner does **not** evaluate the objective. It consumes observed experimental data, asks the LLM for a point or region preference, applies LGBO, and outputs the next physical batch.
@@ -244,6 +272,14 @@ prompt.py
 |-- prior_monte_carlo.py     # Monte Carlo acquisition sampler utilities
 |-- fun/
 |   |-- toy_fun.py           # Toy objective functions
+|   |-- tabular.py           # Shared grid and kNN-IDW interpolation
+|   |-- hplc.py              # HPLC evaluator
+|   |-- cb.py                # Crossed-barrel evaluator
+|   |-- lnp3.py              # LNP3 lookup and scalarization
+|   `-- concrete.py          # Concrete kNN-IDW evaluator
+|-- scripts/download_benchmarks.py  # Download and prepare all four datasets
+|-- docs/benchmark_data.md   # Sources and processing details
+|-- third_party/             # Upstream license and source notices
 |-- examples/
 |   |-- wet_input.example.json
 |   `-- dry_history.example.csv
