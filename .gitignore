@@ -7,3 +7,11 @@ __pycache__/
 
 results/
 .vscode/
+
+# Downloaded third-party benchmark data (see docs/benchmark_data.md).
+/fun/hplc.csv
+/fun/cb.csv
+/fun/lnp3.csv
+/fun/concrete.csv
+/fun/LICENSE.olympus
+/fun/SOURCE.concrete.txt

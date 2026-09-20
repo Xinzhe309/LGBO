@@ -1,0 +1,11 @@
+Concrete Compressive Strength dataset
+
+Creator: I-Cheng Yeh
+Repository: https://archive.ics.uci.edu/dataset/165/concrete+compressive+strength
+Data DOI: https://doi.org/10.24432/C5PK67
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+License URL: https://creativecommons.org/licenses/by/4.0/
+
+LGBO derives its seven-input benchmark by retaining rows with Age <= 100,
+dropping the Age column, and renaming the remaining columns. See
+docs/benchmark_data.md for the complete processing description.
